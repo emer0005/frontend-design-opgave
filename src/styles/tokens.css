@@ -33,6 +33,11 @@
   --color-on-ui-primary-muted: var(--color-neutrals-400);
 
   /* ==== Spacing ==== */
+  --space-xs: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+  --space-s: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+  --space-m: clamp(1.6875rem, 1.6108rem + 0.3409vw, 1.875rem);
+  --space-l: clamp(2.25rem, 2.1477rem + 0.4545vw, 2.5rem);
+  --space-xl: clamp(3.375rem, 3.2216rem + 0.6818vw, 3.75rem);
 
   /* ==== Typography ==== */
   --step--2: clamp(0.5208rem, 0.3813rem + 0.5583vw, 0.8rem);
@@ -49,5 +54,5 @@
   --border-radius-s: 4px;
   --border-radius-m: 8px;
   --border-radius-l: 12px;
-  --border-radius-xl: 16px;
+  --border-radius-xl: 40px;
 }
