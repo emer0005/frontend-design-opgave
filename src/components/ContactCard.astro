@@ -1,27 +1,144 @@
 ---
 import { Image } from "astro:assets";
-import Contact from "../assets/images/img_contact.jpg";
-import Contact1 from "../assets/images/img_contact1.jpg";
-import Contact2 from "../assets/images/img_contact2.jpg";
+import Contact from "@assets/images/img_contact.jpg";
+import Contact1 from "@assets/images/img_contact2.jpg";
+import Contact2 from "@assets/images/img_contact3.jpg";
+import PhoneIcon from "@icons/phone.svg";
+import PinIcon from "@icons/pin.svg";
+import ClockIcon from "@icons/clock.svg";
 ---
 
 <section>
-  <h3>PROCESS</h3>
-  <h1>Contact Us. It’s Easy.</h1>
-  <p>
-    Leverage agile frameworks to provide a robust synopsis for high level
-    overviews. Iterative approaches to corporate strategy foster collaborative.
-  </p>
-
-  <ul>
-    <li>Call Today <br /> <span>+1 800 100 900</span></li>
-    <li>Monday To Friday <br /> <span>9AM - 5PM</span></li>
-    <li>USA Office <br /> <span>195 Devonchire St Bostion, MA 02110</span></li>
-  </ul>
-
   <div>
-    <Image src={Contact} alt="CEO" />
+    <h3>PROCESS</h3>
+    <h1>Contact Us. It’s Easy.</h1>
+    <p>
+      Leverage agile frameworks to provide a robust synopsis for high level
+      overviews. Iterative approaches to corporate strategy foster
+      collaborative.
+    </p>
+
+    <ul class="contact-list">
+      <li style={`--icon: url(${PhoneIcon.src}); --bg: #ffecbb;`}>
+        Call Today <br />
+        <span>+1 800 100 900</span>
+      </li>
+
+      <li style={`--icon: url(${ClockIcon.src}); --bg: #a4eda4;`}>
+        Monday To Friday <br />
+        <span>9AM - 5PM</span>
+      </li>
+
+      <li style={`--icon: url(${PinIcon.src}); --bg: #eaeaea;`}>
+        USA Office <br />
+        <span>195 Devonshire St Boston, MA 02110</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="grid">
+    <div class="img-wrapper">
+      <Image src={Contact} alt="CEO" />
+      <div class="box"></div>
+    </div>
+
     <Image src={Contact1} alt="CEO" />
     <Image src={Contact2} alt="CEO" />
   </div>
 </section>
+
+<style>
+  section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 5rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    gap: 20px;
+
+    > :first-child {
+      grid-row: 1/3;
+    }
+
+    > :last-child {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+  }
+
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .contact-list li {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 16px;
+    color: var(--color-text-muted);
+  }
+
+  .contact-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 4px;
+
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    /* cirklens farve */
+    background-color: var(--bg);
+
+    /* ikonet */
+    background-image: var(--icon);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+  }
+
+  .img-wrapper {
+    position: relative;
+  }
+
+  .img-wrapper .box {
+    position: absolute;
+    width: 280px;
+    height: 140px;
+    background-color: var(--color-green-400);
+    border-radius: var(--border-radius-l);
+    z-index: 0;
+
+    bottom: -40px;
+    left: -40px;
+  }
+
+  .img-wrapper img {
+    position: relative;
+    z-index: 1;
+    border-radius: 25px;
+    object-fit: cover;
+  }
+
+  h1 {
+    color: var(--color-neutrals-900);
+    font-size: var(--step-1);
+    font-weight: 500;
+  }
+
+  p {
+    color: var(--color-neutrals-700);
+  }
+
+  span {
+    color: var(--color-text);
+  }
+</style>
