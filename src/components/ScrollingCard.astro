@@ -1,0 +1,38 @@
+---
+const { finan } = Astro.props;
+import cal from "@icons/cal.svg";
+---
+
+<article class="card">
+  <h1>{finan.title}</h1>
+  <p>{finan.description}</p>
+</article>
+
+<style>
+  @layer components {
+    article {
+      background: var(--color-surface-tertiary);
+      color: var(--color-on-surface-elevated);
+      padding: 2rem; /* Dette burde være en token */
+      border-radius: 20px; /* Dette burde være en token */
+    }
+
+    h1 {
+      color: var(--color-neutrals-900);
+      font-size: var(--step-1);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--color-neutrals-700);
+    }
+
+    .card {
+      flex: 1 0 400px;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      gap: 2rem;
+    }
+  }
+</style>

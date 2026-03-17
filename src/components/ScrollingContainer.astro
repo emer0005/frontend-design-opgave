@@ -1,0 +1,66 @@
+---
+import finanData from "@data/financialProjections.json";
+import ScrollingCard from "@components/ScrollingCard.astro";
+import Navigation1 from "@icons/navigation1.svg";
+---
+
+<section>
+  <div class="grid">
+    <div>
+      <h3>{finanData.eyebrow}</h3>
+      <h1>{finanData.title}</h1>
+      <p>{finanData.subtitle}</p>
+    </div>
+    <div class="svg">
+      <Navigation1 />
+    </div>
+  </div>
+  <div class="finans">
+    {finanData.values.map((finan) => <ScrollingCard finan={finan} />)}
+  </div>
+</section>
+
+<style>
+  .finans {
+    padding-inline: 2rem;
+    scroll-snap-type: inline mandatory;
+    overflow-x: auto;
+    display: flex;
+    gap: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin-left: auto;
+  }
+
+  .svg {
+    justify-items: center;
+  }
+
+  section {
+    background-color: var(--color-neutrals-100);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    & > * + * {
+      margin-top: var(--space-xs, 1rlh);
+    }
+  }
+
+  h3 {
+    color: var(--color-neutrals-900);
+  }
+  h1 {
+    font-size: var(--step-2);
+    font-weight: 600;
+    color: (var(--color-neutrals-900));
+  }
+  p {
+    color: var(--color-neutrals-700);
+    max-width: 600px;
+  }
+</style>

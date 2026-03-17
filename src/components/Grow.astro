@@ -1,0 +1,72 @@
+---
+import valuesData from "@data/coreValues.json";
+import GrowCard from "./GrowCard.astro";
+import ArrowRight from "@icons/arrow--right.svg";
+---
+
+<section>
+  <div class="grid">
+    <h3>{valuesData.eyebrow}</h3>
+    <h1>{valuesData.title}</h1>
+    <p>{valuesData.subtitle}</p>
+
+    <div class="values">
+      {valuesData.values.map((value) => <GrowCard value={value} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    background-color: var(--color-text);
+
+    padding: 8lh 1lh;
+    --grid-color: oklch(from var(--color-surface-highlight) l c h / 0.18);
+    --grid-size: 60px;
+
+    background:
+      radial-gradient(ellipse farthest-side at 60% 60%, #0000 10%, #030712 75%),
+      conic-gradient(
+          from 180deg at 1px 1px,
+          var(--grid-color) 75%,
+          #0000 0
+        ) -1px -1px /
+        var(--grid-size) var(--grid-size),
+      #030712;
+    /*background-color: #000;
+  background-positon: -1px -1px;
+  background-repeat: repeat;
+  background-image: conic-gradient(from 180deg at 1px 1px, red 75%, #0000 0);
+  background-size: 60px 60px;*/
+    color: #fff;
+
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    & > * + * {
+      margin-top: var(--space-xs, 1rlh);
+    }
+  }
+
+  .grid {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  h3 {
+    color: var(--color-on-ui-primary);
+  }
+  h1 {
+    font-size: var(--step-2);
+    font-weight: 600;
+    color: var(--color-on-ui-primary);
+  }
+  p {
+    color: var(--color-on-ui-primary);
+    max-width: 600px;
+  }
+</style>

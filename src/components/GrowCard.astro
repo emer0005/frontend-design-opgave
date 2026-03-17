@@ -1,0 +1,46 @@
+---
+const { value } = Astro.props;
+import ArrowRight from "@icons/arrow--right.svg";
+---
+
+<article class="card">
+  <h1>{value.title}</h1>
+  <p>{value.description}</p>
+  <a href="#">Read more <ArrowRight stroke-width={2.5} /></a>
+</article>
+
+<style>
+  @layer components {
+    article {
+      background: var(--color-surface-tertiary);
+      color: var(--color-on-surface-elevated);
+      padding: 2rem; /* Dette burde være en token */
+      border-radius: 20px; /* Dette burde være en token */
+      width: 250px;
+    }
+
+    h1 {
+      color: var(--color-neutrals-900);
+      font-size: var(--step-1);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--color-neutrals-700);
+    }
+
+    a {
+      display: inline flex;
+      gap: 1ch;
+      color: var(--color-text);
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 1rem;
+
+      svg {
+        inline-size: 16px;
+      }
+    }
+  }
+</style>
