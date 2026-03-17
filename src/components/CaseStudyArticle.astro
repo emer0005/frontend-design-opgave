@@ -64,4 +64,48 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
   }
 </article>
 
-<style></style>
+<style>
+  section {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  dt {
+    color: var(--color-on-ui-primary);
+  }
+
+  .case-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xs);
+    background-color: var(--color-ui-primary);
+    color: var(--color-on-ui-primary);
+    padding: var(--space-m);
+    border-radius: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .case-details dl {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xs);
+    background: none;
+  }
+
+  .case-details dl > div {
+    display: flex;
+    flex-direction: column; /* dt over dd */
+  }
+
+  .case-details .button {
+    align-self: start; /* så den ikke strækkes */
+    justify-self: start; /* venstrejusteret */
+    padding: 0.75rem 1.5rem; /* normal knapstørrelse */
+    background-color: var(--color-action);
+    color: white;
+    border-radius: 20px;
+    display: inline-block; /* vigtig! forhindrer stræk */
+  }
+</style>
