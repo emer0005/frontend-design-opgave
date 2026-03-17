@@ -1,0 +1,29 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import TopLayout from "@components/TopLayout.astro";
+import MeetOurTeam from "@components/MeetOurTeam.astro";
+import Footer from "@components/Footer.astro";
+---
+
+<Layout>
+  <Header />
+  <TopLayout
+    title="The Consultors"
+    eyebrow="TEAM"
+    text="Our success stems from the synergy between dedicated teams and our valued clients. We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction."
+  />
+  <MeetOurTeam />
+  <Footer />
+</Layout>
+
+<style>
+  .team {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    /* Parent definerer rækker */
+    grid-auto-rows: auto;
+  }
+</style>

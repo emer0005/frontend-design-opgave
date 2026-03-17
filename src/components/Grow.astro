@@ -2,16 +2,21 @@
 import valuesData from "@data/coreValues.json";
 import GrowCard from "./GrowCard.astro";
 import ArrowRight from "@icons/arrow--right.svg";
+const { variant } = Astro.props;
 ---
 
-<section>
+<section class={`${variant}`}>
   <div class="grid">
     <h3>{valuesData.eyebrow}</h3>
     <h1>{valuesData.title}</h1>
     <p>{valuesData.subtitle}</p>
 
     <div class="values">
-      {valuesData.values.map((value) => <GrowCard value={value} />)}
+      {
+        valuesData.values.map((value) => (
+          <GrowCard value={value} variant="about" />
+        ))
+      }
     </div>
   </div>
 </section>
@@ -68,5 +73,21 @@ import ArrowRight from "@icons/arrow--right.svg";
   p {
     color: var(--color-on-ui-primary);
     max-width: 600px;
+  }
+
+  .about h1 {
+    color: var(--color-text);
+  }
+
+  .about h3 {
+    color: var(--color-text-muted);
+  }
+
+  .about p {
+    color: var(--color-text-muted);
+  }
+
+  .about {
+    background: var(--color-surface-secondary);
   }
 </style>

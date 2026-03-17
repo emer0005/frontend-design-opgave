@@ -1,33 +1,47 @@
 ---
 import { Image } from "astro:assets";
-import wteImage from "@assets/images/what_to_expect.webp";
-import Checkmark from "@icons/checkmark.svg";
+const { variant, eyebrow, title, text, punkt1, punkt2, img } = Astro.props;
 ---
 
-<section>
+<section class={`${variant}`}>
   <div class="wte_card">
-    <Image src={wteImage} alt="CEO" />
+    <Image src={img} alt="CEO" />
   </div>
   <div class="wte_content">
-    <h2>WE'LL WORK WITH YOU</h2>
-    <h1>What To Expect</h1>
-    <p>
-      Our collaboration is built on transparency, efficiency, and measurable
-      results. Together, we create strategies tailored to your unique needs and
-      goals.
-    </p>
+    <h2>{eyebrow}</h2>
+    <h1>{title}</h1>
+    <p>{text}</p>
     <ul>
       <li>
-        Collaborate to build actionable strategies that drive sustainable growth
-        and deliver tangible outcomes.
+        {punkt1}
       </li>
       <li>
-        Identify opportunities to optimize processes and implement impactful
-        solutions with measurable results.
+        {punkt2}
       </li>
     </ul>
   </div>
 </section>
+
+<div class={`${variant}`}>
+  <div class="flex">
+    <div>
+      <h1>1128+</h1>
+      <p>Successful Work</p>
+    </div>
+    <div>
+      <h1>908+</h1>
+      <p>Team member</p>
+    </div>
+    <div>
+      <h1>258+</h1>
+      <p>Happy Customers</p>
+    </div>
+    <div>
+      <h1>564+</h1>
+      <p>Creative Ideas</p>
+    </div>
+  </div>
+</div>
 
 <style>
   section {
@@ -112,6 +126,25 @@ import Checkmark from "@icons/checkmark.svg";
     }
   }
 
+  .about .wte_card::before {
+    transform: translate(200%, -12%);
+    width: 170px;
+    height: 150px;
+  }
+
+  .flex {
+    display: none;
+  }
+
+  .about .flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
   @media (min-width: 800px) {
     section {
       display: grid;
@@ -123,6 +156,10 @@ import Checkmark from "@icons/checkmark.svg";
 
     .wte_card {
       order: -1;
+    }
+
+    .about .wte_card {
+      order: 1;
     }
   }
 </style>

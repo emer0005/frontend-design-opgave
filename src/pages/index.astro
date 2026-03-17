@@ -7,14 +7,24 @@ import ScrollingContainer from "@components/ScrollingContainer.astro";
 import Experience from "@components/Experience.astro";
 import Grow from "@components/Grow.astro";
 import ContactCard from "@components/ContactCard.astro";
+import Footer from "@components/Footer.astro";
+import wteImage from "@assets/images/what_to_expect.webp";
 ---
 
 <Layout>
   <Header />
   <Hero />
-  <Wte />
+  <Wte
+    eyebrow="WE'LL WORK WITH YOU"
+    title="What To Expect"
+    text="Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals."
+    punkt1="Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes."
+    punkt2="Identify opportunities to optimize processes and implement impactful solutions with measurable results."
+    img={wteImage}
+  />
   <ScrollingContainer />
   <Experience />
   <Grow />
   <ContactCard />
+  <Footer />
 </Layout>
