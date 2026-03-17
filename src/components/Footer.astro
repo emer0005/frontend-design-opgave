@@ -1,0 +1,83 @@
+---
+
+---
+
+<footer>
+  <div class="text">
+    <h3>STAY UPDATED</h3>
+    <h1>Subscribe Out Newsletter</h1>
+    <p>Build stronger Customer Relationships with <span>Consultalk</span></p>
+    <input type="text" placeholder="your mail address" />
+    <button>Subscribe</button>
+  </div>
+
+  <div class="footer">
+    <a class="logo" href="index.html">Ask<span>Experts</span></a>
+    <p>©2025 Consultalk. All rights reserved</p>
+    <p>Terms of Service | Privacy Policy</p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background-color: var(--color-surface-elevated);
+    margin-top: 5rem;
+  }
+
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 75rem;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .text {
+    max-width: 75rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  input {
+    border-radius: 40px;
+    border: 2px solid var(--color-text-weak);
+    padding: 10px;
+  }
+
+  button {
+    background-color: var(--color-action);
+    padding: 10px;
+    border-radius: 40px;
+    border: none;
+  }
+
+  .logo {
+    color: var(--color-surface-tertiary);
+    font-size: var(--step-1);
+    font-weight: 600;
+    text-box: trim-both cap alphabetic;
+
+    @supports not (text-box-trim: trim-both) {
+      margin-top: calc(0.5cap- 0.5lh);
+    }
+  }
+
+  .logo span {
+    color: var(--color-surface-highlight);
+  }
+
+  h1 {
+    color: var(--color-on-ui-primary);
+    font-weight: 500;
+    font-size: var(--step-1);
+  }
+
+  span,
+  h3 {
+    color: var(--color-action);
+  }
+
+  p {
+    color: var(--color-text-weak);
+  }
+</style>

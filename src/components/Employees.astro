@@ -1,0 +1,60 @@
+---
+const { employee, variant } = Astro.props;
+---
+
+<article class={`employee ${variant}`}>
+  <div class="image-wrapper">
+    <img src={employee.img} alt={employee.name} />
+    <h3 class="overlay-title">{employee.title}</h3>
+  </div>
+
+  <h1>{employee.name}</h1>
+  <p>{employee.description}</p>
+</article>
+
+<style>
+  /* Basiskort */
+  .employee {
+    display: grid;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background: white;
+  }
+
+  .employee img {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+
+  h1,
+  h3,
+  p {
+    margin: 0;
+  }
+
+  /* --- KUN VARIANT: meetteam --- */
+  .employee.meetteam .image-wrapper {
+    display: grid; /* gør overlay muligt */
+  }
+
+  /* Både img og h3 ligger i samme grid-celle */
+  .employee.meetteam .image-wrapper img,
+  .employee.meetteam .image-wrapper .overlay-title {
+    grid-area: 1 / 1;
+  }
+
+  /* h3 placeres nederst til venstre via grid alignment */
+  .employee.meetteam .overlay-title {
+    align-self: end;
+    justify-self: end;
+    margin: 0.75rem;
+    padding: 0.3rem 0.6rem;
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+    border-radius: 20px;
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+</style>

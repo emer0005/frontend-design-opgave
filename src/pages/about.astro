@@ -1,0 +1,35 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import TopLayout from "@components/TopLayout.astro";
+import Wte from "@components/Wte.astro";
+import aboutImage from "@assets/images/about.jpg";
+import Grow from "@components/Grow.astro";
+import AccordionContainer from "@components/AccordionContainer.astro";
+import Footer from "@components/Footer.astro";
+import OurTeamContainer from "@components/OurTeamContainer.astro";
+---
+
+<Layout>
+  <Header />
+  <TopLayout
+    title="Igniting Innovation"
+    eyebrow="ABOUT"
+    text="Our strength lies in the collaboration between our talented teams and esteemed clients. We cultivate a workplace that champions innovation, promotes peak performance, and guarantees client satisfaction."
+  />
+  <Wte
+    variant="about"
+    eyebrow="OUT VISION"
+    title="Turn your ideas into reality"
+    text="Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps."
+    punkt1="Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day."
+    punkt2="Capitalize on low hanging fruit to identify a ballpark value added activity to beta test override the digital."
+    img={aboutImage}
+  />
+
+  <Grow variant="about" />
+  <OurTeamContainer />
+
+  <AccordionContainer />
+  <Footer />
+</Layout>

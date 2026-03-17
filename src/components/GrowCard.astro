@@ -1,9 +1,9 @@
 ---
-const { value } = Astro.props;
+const { value, variant } = Astro.props;
 import ArrowRight from "@icons/arrow--right.svg";
 ---
 
-<article class="card">
+<article class={`card ${variant}`}>
   <h1>{value.title}</h1>
   <p>{value.description}</p>
   <a href="#">Read more <ArrowRight stroke-width={2.5} /></a>
@@ -17,6 +17,10 @@ import ArrowRight from "@icons/arrow--right.svg";
       padding: 2rem; /* Dette burde være en token */
       border-radius: 20px; /* Dette burde være en token */
       width: 250px;
+    }
+
+    .about {
+      background: var(--color-surface-primary);
     }
 
     h1 {

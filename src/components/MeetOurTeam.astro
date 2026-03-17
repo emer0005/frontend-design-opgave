@@ -1,0 +1,22 @@
+---
+import EmployeeData from "@data/employees.json";
+import Employees from "@components/Employees.astro";
+---
+
+<section class="team">
+  {
+    EmployeeData.map((employee) => (
+      <Employees employee={employee} variant="meetteam" />
+    ))
+  }
+</section>
+
+<style>
+  .team {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+</style>
