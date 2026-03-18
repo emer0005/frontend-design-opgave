@@ -1,15 +1,30 @@
+---
+import LogIn from "./LogIn.astro";
+---
+
 <nav>
   <div class="nav">
     <a class="logo" href="index.html">Ask<span>Experts</span></a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
 
     <ul class="menu">
       <li><a href="index.html">Home</a></li>
       <li><a href="/casestudy.html">Case study</a></li>
       <li><a href="/team.html">Team</a></li>
       <li><a href="/about">About</a></li>
+
+      <!-- LOGIN TIL MOBIL -->
+      <li class="login-mobile"><LogIn /></li>
     </ul>
 
-    <button>Login</button>
+    <!-- LOGIN TIL DESKTOP -->
+    <LogIn class="login-desktop" />
   </div>
 </nav>
 
@@ -37,11 +52,6 @@
     color: var(--color-surface-tertiary);
     font-size: var(--step-1);
     font-weight: 600;
-    text-box: trim-both cap alphabetic;
-
-    @supports not (text-box-trim: trim-both) {
-      margin-top: calc(0.5cap- 0.5lh);
-    }
   }
 
   .logo span {
@@ -50,12 +60,12 @@
 
   li {
     list-style: none;
+  }
 
-    & a {
-      color: var(--color-on-ui-primary);
-      text-decoration: none;
-      font-size: var(--step--1);
-    }
+  li a {
+    color: var(--color-on-ui-primary);
+    text-decoration: none;
+    font-size: var(--step--1);
   }
 
   button {
@@ -63,5 +73,117 @@
     width: 100px;
     justify-self: end;
     border-radius: var(--border-radius-xl);
+  }
+  .burger,
+  .nav-toggle {
+    display: none;
+  }
+
+  /* Skjul mobil-login på desktop */
+  .login-mobile {
+    display: none;
+  }
+
+  /* Desktop login er synlig */
+  .login-desktop {
+    display: block;
+  }
+
+  @media (max-width: 800px) {
+    /* Layout for mobil */
+    .nav {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+
+    /* Skjul desktop login */
+    .login-desktop {
+      display: none;
+    }
+
+    /* Skjul mobil login som udgangspunkt */
+    .login-mobile {
+      display: none;
+      margin-top: 1rem;
+    }
+
+    /* Skjul menu som udgangspunkt (overruler desktop .menu) */
+    .menu {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    /* VIS BURGER IKONET */
+    .burger {
+      display: flex;
+      justify-self: end;
+      width: 28px;
+      height: 24px;
+      position: relative;
+      cursor: pointer;
+      z-index: 20;
+    }
+
+    .burger span {
+      position: absolute;
+      left: 0;
+      width: 28px;
+      height: 3px;
+      background: var(--color-on-ui-primary);
+      border-radius: 3px;
+      transition: 0.25s ease;
+    }
+
+    .burger span:nth-child(1) {
+      top: 2px;
+    }
+    .burger span:nth-child(2) {
+      top: 10px;
+    }
+    .burger span:nth-child(3) {
+      top: 18px;
+    }
+
+    .nav-toggle {
+      display: block;
+      position: absolute;
+      opacity: 0;
+      width: 30px;
+      height: 30px;
+      right: 1rem;
+      top: 1.5rem;
+      cursor: pointer;
+      z-index: 30;
+    }
+
+    /* Når burgeren er åbnet: vis menu + login */
+    .nav-toggle:checked ~ .menu {
+      display: flex;
+      background: var(--color-surface-elevated);
+      padding: 1.5rem;
+      border-radius: 0 0 20px 20px;
+      margin-top: 1rem;
+    }
+
+    .nav-toggle:checked ~ .menu .login-mobile {
+      display: block;
+    }
+
+    /* Burger → X */
+    .nav-toggle:checked + .burger span:nth-child(1) {
+      top: 10px;
+      transform: rotate(45deg);
+    }
+
+    .nav-toggle:checked + .burger span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle:checked + .burger span:nth-child(3) {
+      top: 10px;
+      transform: rotate(-45deg);
+    }
   }
 </style>

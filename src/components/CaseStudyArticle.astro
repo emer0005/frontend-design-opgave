@@ -7,7 +7,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
 
 <article>
   <header>
-    <DynamicImage imagePath={image} altText={caseName} />
+    <DynamicImage imagePath={image} altText={caseName} class="hero-image" />
     <div class="case-details">
       <dl>
         <div>
@@ -57,6 +57,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
             altText={section.title}
             width={600}
             height={400}
+            class="section-image"
           />
         )}
       </section>
@@ -65,9 +66,38 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
 </article>
 
 <style>
-  section {
+  article {
     max-width: 1200px;
     margin: 0 auto;
+  }
+  section {
+    max-width: 65ch;
+    margin: 0 auto;
+  }
+
+  header {
+    position: relative;
+    margin-bottom: 4rem; /* justér efter smag */
+  }
+
+  h2 {
+    font-size: var(--step-2);
+    font-weight: 500;
+    color: (var(--color-neutrals-900));
+    margin: 0 auto;
+  }
+
+  h3 {
+    font-size: var(--step-1);
+    font-weight: 500;
+    color: (var(--color-neutrals-900));
+  }
+
+  .hero-image,
+  .section-image {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    display: block;
   }
 
   dt {
@@ -84,6 +114,67 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
     border-radius: 30px;
     max-width: 1200px;
     margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    bottom: -3rem; /* hvor meget den skal hænge ned */
+    transform: translateX(-50%);
+    z-index: 10;
+    width: calc(100% - 2rem); /* så den ikke går helt ud til kanten på mobil */
+  }
+
+  @media (max-width: 600px) {
+    article {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    header {
+      margin-bottom: 12rem; /* justér efter hvor langt boksen overlapper */
+    }
+    .case-details {
+      position: absolute;
+      left: 50%;
+      bottom: -10rem; /* ← flyt den længere ned her */
+      transform: translateX(-50%);
+      width: 90%;
+      padding: var(--space-s);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-s);
+    }
+
+    .case-details dl {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .case-details dl > div {
+      display: flex;
+      flex-direction: column;
+      padding: var(--space-2xs) 0;
+    }
+
+    .case-details dl > div:last-child {
+      border-bottom: none;
+    }
+
+    .case-details dt {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .case-details dd {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .case-details .button {
+      align-self: flex-start;
+      margin-top: var(--space-xs);
+      padding: 0.6rem 1.2rem;
+      border-radius: 14px;
+    }
   }
 
   .case-details dl {
@@ -100,11 +191,11 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
   }
 
   .case-details .button {
-    align-self: start; /* så den ikke strækkes */
-    justify-self: start; /* venstrejusteret */
+    align-self: center; /* så den ikke strækkes */
+    justify-self: cetner; /* venstrejusteret */
     padding: 0.75rem 1.5rem; /* normal knapstørrelse */
     background-color: var(--color-action);
-    color: white;
+    color: var(--color-text);
     border-radius: 20px;
     display: inline-block; /* vigtig! forhindrer stræk */
   }

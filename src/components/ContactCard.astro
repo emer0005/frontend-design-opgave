@@ -141,4 +141,18 @@ import ClockIcon from "@icons/clock.svg";
   span {
     color: var(--color-text);
   }
+
+  @media (max-width: 768px) {
+    section {
+      grid-template-columns: 1fr;
+    }
+
+    section > :first-child {
+      order: 1; /* teksten */
+    }
+
+    section > :last-child {
+      order: 2; /* billedcollagen */
+    }
+  }
 </style>
