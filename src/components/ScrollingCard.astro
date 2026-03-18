@@ -1,9 +1,21 @@
 ---
 const { finan } = Astro.props;
-import cal from "@icons/cal.svg";
+
+import cal from "@icons/cal.svg?url";
+import card from "@icons/card.svg?url";
+import law from "@icons/law.svg?url";
+import money from "@icons/money.svg?url";
+
+const icons = {
+  cal,
+  card,
+  law,
+  money,
+};
 ---
 
 <article class="card">
+  <img src={icons[finan.icon]} alt={finan.icon} />
   <h1>{finan.title}</h1>
   <p>{finan.description}</p>
 </article>
@@ -13,8 +25,15 @@ import cal from "@icons/cal.svg";
     article {
       background: var(--color-surface-tertiary);
       color: var(--color-on-surface-elevated);
-      padding: 2rem; /* Dette burde være en token */
-      border-radius: 20px; /* Dette burde være en token */
+      padding: 2rem;
+      border-radius: 20px;
+    }
+
+    .card {
+      flex: 0 0 400px;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      gap: 2rem;
     }
 
     h1 {
@@ -26,13 +45,6 @@ import cal from "@icons/cal.svg";
 
     p {
       color: var(--color-neutrals-700);
-    }
-
-    .card {
-      flex: 1 0 400px;
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
-      gap: 2rem;
     }
   }
 </style>
