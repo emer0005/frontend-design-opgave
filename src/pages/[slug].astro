@@ -1,0 +1,48 @@
+---
+import team from "@data/employees.json";
+
+// 1. Fortæl Astro hvilke sider der skal genereres
+export function getStaticPaths() {
+  return team.map((person) => ({
+    params: { slug: person.slug },
+    props: { person },
+  }));
+}
+
+// 2. Modtag person-data fra props
+const { person } = Astro.props;
+---
+
+<html>
+  <head>
+    <title>{person.name}</title>
+  </head>
+  <body>
+    <h1>{person.name}</h1>
+    <h2>{person.title}</h2>
+
+    <img src={person.img} alt={person.name} />
+
+    <p>{person.description_long}</p>
+
+    <h3>Past Experience</h3>
+    <p>{person.past_experience}</p>
+
+    <h3>Social links</h3>
+    <ul>
+      {
+        person.social_links.map((link) => (
+          <li>
+            <a href={link.url}>{link.platform}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </body>
+</html>
+
+<style>
+  @view-transition {
+    navigation: auto;
+  }
+</style>

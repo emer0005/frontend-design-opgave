@@ -8,9 +8,10 @@ const { employee, variant } = Astro.props;
     <h3 class="overlay-title">{employee.title}</h3>
   </div>
 
-  <h1>{employee.name}</h1>
-  <p>{employee.description}</p>
+  <h1><a href={`/${employee.slug}`}></a>{employee.name}</h1>
 </article>
+<p>{employee.description}</p>
+<a href={`/${employee.slug}`} class="employee-link"></a>
 
 <style>
   /* Basiskort */
@@ -56,5 +57,33 @@ const { employee, variant } = Astro.props;
     border-radius: 20px;
     font-size: var(--step--1);
     font-weight: 600;
+  }
+
+  .employee {
+    max-width: 400px;
+    padding: 2rem;
+    position: relative;
+
+    > a {
+      position: relative;
+      z-index: 1;
+      &:hover {
+        color: red;
+      }
+    }
+  }
+
+  h1 a {
+    &::after {
+      content: "";
+      position: absolute;
+      /*
+    top: 0;
+    left: 0;
+    right:0;
+    bottom: 0;
+    */
+      inset: 0;
+    }
   }
 </style>

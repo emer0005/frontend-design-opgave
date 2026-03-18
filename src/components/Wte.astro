@@ -127,7 +127,7 @@ const { variant, eyebrow, title, text, punkt1, punkt2, img } = Astro.props;
   }
 
   .about .wte_card::before {
-    transform: translate(200%, -12%);
+    transform: translate(150%, -12%);
     width: 170px;
     height: 150px;
   }
@@ -160,6 +160,12 @@ const { variant, eyebrow, title, text, punkt1, punkt2, img } = Astro.props;
 
     .about .wte_card {
       order: 1;
+    }
+
+    .about .wte_card::before {
+      transform: translate(200%, -12%);
+      width: 170px;
+      height: 150px;
     }
   }
 </style>
