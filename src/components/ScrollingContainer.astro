@@ -15,52 +15,76 @@ import Navigation1 from "@icons/navigation1.svg";
       <Navigation1 />
     </div>
   </div>
-  <div class="finans">
-    {finanData.values.map((finan) => <ScrollingCard finan={finan} />)}
+  <div class="cards_container">
+    <div class="cards">
+      {finanData.values.map((finan) => <ScrollingCard finan={finan} />)}
+    </div>
   </div>
 </section>
 
 <style>
-  .finans {
-    padding-inline: 2rem;
-    scroll-snap-type: inline mandatory;
-    overflow-x: auto;
-    display: flex;
-    gap: 2rem;
-    max-width: 1200px;
-    margin-left: auto;
-  }
+  @layer components {
+    /************* Cards *************/
+    .cards_container {
+      max-width: 1200px;
+      margin-inline: auto;
+      overflow: visible;
 
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    max-width: 1200px;
-    margin-left: auto;
-  }
-
-  .svg {
-    justify-items: center;
-  }
-
-  section {
-    background-color: var(--color-neutrals-100);
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    & > * + * {
-      margin-top: var(--space-xs, 1rlh);
+      .cards {
+        display: flex;
+        gap: 2rem;
+        overflow-x: auto;
+        scroll-snap-type: inline mandatory;
+        width: 100vw;
+      }
     }
-  }
 
-  h3 {
-    color: var(--color-neutrals-900);
-  }
-  h1 {
-    font-size: var(--step-2);
-    font-weight: 600;
-    color: (var(--color-neutrals-900));
-  }
-  p {
-    color: var(--color-neutrals-700);
-    max-width: 600px;
+    /*************** @media *************/
+
+    @media (width > 600px) {
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 1200px;
+        margin-inline: auto;
+      }
+
+      .svg {
+        justify-self: end;
+        align-self: end;
+      }
+    }
+
+    /************************************/
+
+    section {
+      overflow: hidden;
+      background-color: var(--color-neutrals-100);
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+
+      & > * + * {
+        margin-top: var(--space-xs, 1rlh);
+      }
+    }
+
+    h3 {
+      color: var(--color-neutrals-900);
+    }
+
+    h1 {
+      font-size: var(--step-2);
+      font-weight: 600;
+      color: (var(--color-neutrals-900));
+    }
+
+    p {
+      color: var(--color-neutrals-700);
+      max-width: 600px;
+    }
+
+    .svg {
+      width: 100px;
+    }
   }
 </style>
