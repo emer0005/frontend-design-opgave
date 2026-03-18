@@ -1,7 +1,9 @@
 ---
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
 import team from "@data/employees.json";
+import Footer from "@components/Footer.astro";
 
-// 1. Fortæl Astro hvilke sider der skal genereres
 export function getStaticPaths() {
   return team.map((person) => ({
     params: { slug: person.slug },
@@ -9,39 +11,135 @@ export function getStaticPaths() {
   }));
 }
 
-// 2. Modtag person-data fra props
 const { person } = Astro.props;
 ---
 
-<html>
-  <head>
-    <title>{person.name}</title>
-  </head>
-  <body>
-    <h1>{person.name}</h1>
-    <h2>{person.title}</h2>
+<Layout title={person.name}>
+  <Header />
+  <section class="info_img">
+    <div class="img">
+      <img src={person.img} alt={person.name} />
+    </div>
+    <div class="info">
+      <div class="ceo">
+        <h1>{person.name}</h1>
+        <h3>{person.title}</h3>
+        <p>{person.description_long}</p>
+      </div>
+      <div class="past">
+        <h1>Past Experience</h1>
+        <p>{person.past_experience}</p>
+      </div>
+    </div>
 
-    <img src={person.img} alt={person.name} />
+    <div class="some">
+      <ul>
+        {
+          person.social_links.map((link) => (
+            <li>
+              <a href={link.url}>{link.platform}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
 
-    <p>{person.description_long}</p>
-
-    <h3>Past Experience</h3>
-    <p>{person.past_experience}</p>
-
-    <h3>Social links</h3>
-    <ul>
-      {
-        person.social_links.map((link) => (
-          <li>
-            <a href={link.url}>{link.platform}</a>
-          </li>
-        ))
-      }
-    </ul>
-  </body>
-</html>
-
+  <Footer />
+</Layout>
 <style>
+  .info_img {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 6rem;
+  }
+
+  .img {
+    position: relative;
+    width: 80%;
+    justify-self: center;
+  }
+
+  .img::before {
+    content: "";
+    position: absolute;
+    width: 210px;
+    height: 140px;
+    background-color: var(--color-green-400);
+    border-radius: var(--border-radius-l);
+    transform: translate(-20%, -20%);
+    z-index: 0;
+  }
+
+  .img img {
+    grid-column: 1/2;
+    position: relative;
+    display: block;
+    height: 20%;
+    width: 90%;
+    height: auto;
+    z-index: 1;
+    margin-bottom: 2rem;
+    border-radius: 25px;
+  }
+
+  .info {
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* luft mellem sektionerne */
+  }
+  .info > div + div {
+    border-top: 1px solid #c1c1c1;
+    padding-top: 2rem; /* luft over stregen */
+  }
+
+  .some {
+    grid-column: 1/2;
+    grid-row: 2;
+    justify-self: center;
+  }
+
+  .some ul {
+    display: flex;
+    gap: 1rem; /* afstand mellem links */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  h1 {
+    color: var(--color-neutrals-900);
+    font-size: var(--step-1);
+    font-weight: 500;
+  }
+
+  h3 {
+    color: var(--color-neutrals-700);
+    font-weight: 500;
+  }
+
+  p {
+    color: var(--color-neutrals-700);
+  }
+  /* Mobilvisning — ALTID nederst */
+  @media (max-width: 800px) {
+    .info_img {
+      grid-template-columns: 1fr;
+    }
+
+    img,
+    .info,
+    .some {
+      grid-column: 1 / -1;
+    }
+  }
+</style>
+
+<style is:global>
   @view-transition {
     navigation: auto;
   }
