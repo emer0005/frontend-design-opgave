@@ -15,29 +15,29 @@ import Employees from "@components/Employees.astro";
     <button>Meet the team</button>
   </div>
 
-  <div class="values">
-    {
-      EmployeeData.filter(
-        (employee) => employee.id === 1 || employee.id === 2,
-      ).map((employee) => <Employees employee={employee} variant="about" />)
-    }
+  <div class="card_container">
+    <div class="card">
+      {
+        EmployeeData.filter(
+          (employee) => employee.id === 1 || employee.id === 2
+        ).map((employee) => <Employees employee={employee} variant="about" />)
+      }
+    </div>
   </div>
 </section>
 
 <style>
+  /************ Generel styling *************/
   section {
-    display: grid;
     grid-template-columns: 1fr 1fr;
     max-width: 1200px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
-  .values {
-    container: card / inline-size;
-  }
-
-  @container card (width > 300px) {
-    grid-template-columns: 1fr 3fr;
+  p {
+    color: var(--color-text-muted);
   }
 
   h3 {
@@ -49,14 +49,36 @@ import Employees from "@components/Employees.astro";
     color: (var(--color-neutrals-900));
   }
 
-  p {
-    color: var(--color-neutrals-700);
-  }
-
   button {
     background-color: var(--color-neutrals-900);
     color: var(--color-on-ui-primary);
     padding: 10px;
     border-radius: 30px;
+  }
+
+  /*************** @Media ********************/
+  @media (min-width: 800px) {
+    section {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  /************** @Container  ***************/
+  .card_container {
+    display: grid;
+    gap: 2rem;
+    container-type: inline-size;
+  }
+
+  .card {
+    display: grid;
+  }
+
+  @container (width < 500px) {
+    .card {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
   }
 </style>
