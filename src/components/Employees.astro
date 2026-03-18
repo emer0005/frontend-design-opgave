@@ -1,33 +1,47 @@
 ---
 const { employee, variant } = Astro.props;
+import Instagram from "@icons/instagram.svg";
+import Facebook from "@icons/facebook.svg";
 ---
 
-<article class={`employee ${variant}`}>
-  <div class="image-wrapper">
-    <img src={employee.img} alt={employee.name} />
-    <h3 class="overlay-title">{employee.title}</h3>
-  </div>
+<article class={`${variant}`}>
+  <div class="card">
+    {
+      variant === "about" ? (
+        <>
+          <img src={employee.img} alt={employee.name} />
 
-  <h1><a href={`/${employee.slug}`}></a>{employee.name}</h1>
+          <div class="text">
+            <h3>{employee.title}</h3>
+            <h1>
+              <a href={`/${employee.slug}`} />
+              {employee.name}
+            </h1>
+            <p>{employee.description}</p>
+          </div>
+        </>
+      ) : (
+        <div class="image-wrapper">
+          <img src={employee.img} alt={employee.name} />
+          <h3>{employee.title}</h3>
+          <h1>
+            <a href={`/${employee.slug}`} />
+            {employee.name}
+          </h1>
+          <p>{employee.description}</p>
+        </div>
+      )
+    }
+    <div class="icons">
+      <Instagram />
+      <Facebook />
+    </div>
+    <a href={`/${employee.slug}`} class="employee-link"></a>
+  </div>
 </article>
-<p>{employee.description}</p>
-<a href={`/${employee.slug}`} class="employee-link"></a>
 
 <style>
-  /* Basiskort */
-  .employee {
-    display: grid;
-    gap: 0.5rem;
-    padding: 1rem;
-    border-radius: 20px;
-    background: white;
-  }
-
-  .employee img {
-    width: 100%;
-    border-radius: 20px;
-    object-fit: cover;
-  }
+  /************* Generelt styling ***********/
 
   h1,
   h3,
@@ -35,55 +49,115 @@ const { employee, variant } = Astro.props;
     margin: 0;
   }
 
-  /* --- KUN VARIANT: meetteam --- */
-  .employee.meetteam .image-wrapper {
-    display: grid; /* gør overlay muligt */
+  p {
+    color: var(--color-text-muted);
   }
 
-  /* Både img og h3 ligger i samme grid-celle */
-  .employee.meetteam .image-wrapper img,
-  .employee.meetteam .image-wrapper .overlay-title {
-    grid-area: 1 / 1;
+  h1 {
+    color: var(--color-text);
   }
 
-  /* h3 placeres nederst til venstre via grid alignment */
-  .employee.meetteam .overlay-title {
-    align-self: end;
-    justify-self: end;
-    margin: 0.75rem;
-    padding: 0.3rem 0.6rem;
-    background: rgba(0, 0, 0, 0.55);
-    color: white;
-    border-radius: 20px;
-    font-size: var(--step--1);
-    font-weight: 600;
+  img {
+    border-radius: 10px;
+    object-fit: cover;
+    align-self: stretch;
   }
 
-  .employee {
-    max-width: 400px;
-    padding: 2rem;
+  .about,
+  .meetteam {
     position: relative;
-
-    > a {
-      position: relative;
-      z-index: 1;
-      &:hover {
-        color: red;
-      }
-    }
   }
 
   h1 a {
     &::after {
       content: "";
       position: absolute;
-      /*
-    top: 0;
-    left: 0;
-    right:0;
-    bottom: 0;
-    */
       inset: 0;
+    }
+  }
+
+  /*************** About ********************/
+
+  .about {
+    container-type: inline-size;
+    display: grid;
+    width: 100%;
+
+    h3 {
+      color: var(--color-text);
+      font-weight: 700;
+    }
+
+    .icons {
+      display: none;
+    }
+  }
+
+  .about .card {
+    display: grid;
+  }
+
+  @container (width > 450px) {
+    .about .card {
+      grid-template-columns: 1fr 3fr;
+      gap: 2rem;
+
+      .text {
+        align-self: center;
+      }
+    }
+  }
+
+  /************** team site *****************/
+
+  .meetteam {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+
+    .image-wrapper {
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .image-wrapper img,
+    .image-wrapper h3 {
+      grid-area: 1 / 1;
+    }
+
+    h3 {
+      align-self: end;
+      justify-self: end;
+      margin: 0.75rem;
+      padding: 0.3rem 0.6rem;
+      background: black;
+      color: white;
+      border-radius: 20px;
+      font-size: var(--step--1);
+      font-weight: 600;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 700;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    .icons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: auto;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: var(--space-xs);
     }
   }
 </style>
