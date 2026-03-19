@@ -3,7 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import team from "@data/employees.json";
 import Footer from "@components/Footer.astro";
-import DynamicImage from "./helpers/DynamicImage.astro";
+import DynamicImage from "@helpers/DynamicImage.astro";
 
 export function getStaticPaths() {
   return team.map((person) => ({
