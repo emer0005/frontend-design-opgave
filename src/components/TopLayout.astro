@@ -4,8 +4,10 @@ const { eyebrow, title, text } = Astro.props;
 
 <div class="back">
   <section>
-    <h3>{eyebrow}</h3>
-    <h1>{title}</h1>
+    <h5>{eyebrow}</h5>
+    <div class="headline">
+      <h1>{title}</h1>
+    </div>
     <p>{text}</p>
   </section>
 </div>
@@ -15,6 +17,23 @@ const { eyebrow, title, text } = Astro.props;
     background-color: var(--color-surface-secondary);
   }
 
+  .headline h1 {
+    position: relative;
+    display: inline-block;
+    z-index: 0; /* opret stacking context */
+  }
+
+  .headline h1::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50vw);
+    bottom: -10px;
+    width: 64vw;
+    height: 6px;
+    background-color: #f5c518;
+    z-index: -1; /* nu kun bag teksten */
+  }
   section {
     text-align: center;
     max-width: 65ch;
