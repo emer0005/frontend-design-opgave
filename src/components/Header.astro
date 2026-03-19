@@ -22,9 +22,7 @@ import LogIn from "./LogIn.astro";
       <!-- LOGIN TIL MOBIL -->
       <li class="login-mobile"><LogIn /></li>
     </ul>
-
-    <!-- LOGIN TIL DESKTOP -->
-    <LogIn class="login-desktop" />
+    <li class="login-desk"><LogIn /></li>
   </div>
 </nav>
 
@@ -48,6 +46,10 @@ import LogIn from "./LogIn.astro";
     padding: 0;
   }
 
+  .login-desk {
+    display: flex;
+    justify-content: flex-end;
+  }
   .logo {
     color: var(--color-surface-tertiary);
     font-size: var(--step-1);
@@ -79,25 +81,17 @@ import LogIn from "./LogIn.astro";
     display: none;
   }
 
-  /* Skjul mobil-login på desktop */
   .login-mobile {
     display: none;
   }
 
-  /* Desktop login er synlig */
-  .login-desktop {
-    display: block;
-  }
-
   @media (max-width: 800px) {
-    /* Layout for mobil */
     .nav {
       grid-template-columns: 1fr auto;
       align-items: center;
     }
 
-    /* Skjul desktop login */
-    .login-desktop {
+    .login-desk {
       display: none;
     }
 
