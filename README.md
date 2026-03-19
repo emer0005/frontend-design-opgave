@@ -1,6 +1,7 @@
-I denne opgave har vi arbejdet med at omsætte et Figma-design til en funktionel løsning i Astro med fokus på semantisk HTML og vedligeholdelsesvenlig CSS. En af de største udfordringer var at implementere nye CSS-teknikker som container, subgrid og anchor positioning på en måde, der samtidig fungerer på tværs af browsere.
+I denne opgave har vi arbejdet med at omsætte et Figma-design til et kodet site i Astro med fokus på vedligeholdelsesvenlig CSS. En af de største udfordringer var at implementere nye CSS-teknikker som container, subgrid og anchor positioning på en måde, der samtidig fungerer på tværs af browsere.
 
-En succes vi oplevede var opbygning af vore komponenter, hvilket gjorde det lettere at genbruge samt holde overblikket over koden.
+En succes vi oplevede var opbygning af vores komponenter, hvilket gjorde det lettere at genbruge samt holde overblikket over koden. Vi oplevede udfordringer med opbygning af vores slug og brugen af subgrid.
+Hvis vi havde haft mere tid vil vi gerne har finpudset og ryddet op i koden.
 
 Vi har anvendt flere teknikker fra undervisningen for eksempel er @container brugt i komponenter for at gøre dem mere fleksible på forskellige sider, og subgrid er anvendt for at sikre konsistent alignment mellem sektioner. Derudover har vi brugt custom properties (fx --space- og --step-) til spacing og typografi, hvilket gør designet mere skalerbart. Relative Color Syntax er brugt til hover, så farver automatisk tilpasses uden at definere nye værdier.
 
