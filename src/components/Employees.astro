@@ -2,6 +2,7 @@
 const { employee, variant } = Astro.props;
 import Instagram from "@icons/instagram.svg";
 import Facebook from "@icons/facebook.svg";
+import DynamicImage from "./helpers/DynamicImage.astro";
 ---
 
 <article class={`${variant}`}>
@@ -9,7 +10,7 @@ import Facebook from "@icons/facebook.svg";
     {
       variant === "about" ? (
         <>
-          <img src={employee.img} alt={employee.name} />
+          <DynamicImage imagePath={employee.img} altText={employee.name} />
 
           <div class="text">
             <h1>
@@ -22,7 +23,7 @@ import Facebook from "@icons/facebook.svg";
         </>
       ) : (
         <div class="image-wrapper">
-          <img src={employee.img} alt={employee.name} />
+          <DynamicImage imagePath={employee.img} altText={employee.name} />
           <h3>{employee.title}</h3>
           <h1>
             <a href={`/${employee.slug}`} />
