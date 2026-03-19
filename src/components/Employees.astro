@@ -10,7 +10,11 @@ import DynamicImage from "./helpers/DynamicImage.astro";
     {
       variant === "about" ? (
         <>
-          <DynamicImage imagePath={employee.img} altText={employee.name} />
+          <DynamicImage
+            imagePath={employee.img}
+            altText={employee.name}
+            class="image-employee"
+          />
 
           <div class="text">
             <h1>
@@ -83,6 +87,10 @@ import DynamicImage from "./helpers/DynamicImage.astro";
       position: absolute;
       inset: 0;
     }
+  }
+
+  .image-employee {
+    border-radius: 20px;
   }
 
   /*************** About ********************/
@@ -167,10 +175,6 @@ import DynamicImage from "./helpers/DynamicImage.astro";
       flex-direction: column;
       height: 100%;
       gap: var(--space-xs);
-    }
-
-    .image-employee {
-      border-radius: 20px;
     }
   }
 </style>

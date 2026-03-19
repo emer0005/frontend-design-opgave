@@ -5,13 +5,16 @@ import Employees from "@components/Employees.astro";
 
 <section>
   <div class="team_hero">
-    <h1>Meet Our Great Team</h1>
-    <p>
-      Welcome to our amazing team! We are a group of passionate individuals
-      dedicated to excellence and innovation. Each member brings unique skills
-      and experiences, working together to achieve our goals. Join us as we
-      embark on exciting projects and create lasting impacts.
-    </p>
+    <div class="text">
+      <h1>Meet Our Great Team</h1>
+      <p>
+        Welcome to our amazing team! We are a group of passionate individuals
+        dedicated to excellence and innovation. Each member brings unique skills
+        and experiences, working together to achieve our goals. Join us as we
+        embark on exciting projects and create lasting impacts.
+      </p>
+    </div>
+
     <button>Join our team</button>
   </div>
 
@@ -48,26 +51,28 @@ import Employees from "@components/Employees.astro";
   .team_hero {
     max-width: 1200px;
     margin-inline: auto;
+    margin-bottom: 2rem;
   }
 
-  .team_hero {
+  .text {
     > * + * {
       margin-top: var(----flow-space, 1rlh);
     }
+  }
 
-    button {
-      background-color: var(--color-ui-primary);
-      color: var(--color-on-ui-primary);
-      place-self: end; /* eller center, end */
-      padding: 10px 2rem;
-      border-radius: 20px;
-    }
+  button {
+    background-color: var(--color-ui-primary);
+    color: var(--color-on-ui-primary);
+    place-self: end; /* eller center, end */
+    padding: 10px 2rem;
+    border-radius: 20px;
+    margin-top: 1.5rem;
+  }
 
-    @media (width > 800px) {
-      .team_hero {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
+  @media (min-width: 800px) {
+    .team_hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
     }
   }
 </style>
