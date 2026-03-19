@@ -1,7 +1,7 @@
 /* Globale styles her */
 
 :root {
-  --paddingtb: var(--space-xl) 0;
+  --paddingtb: var(--space-xl) 2rem;
 }
 
 /******* typografi *****/
@@ -15,7 +15,7 @@ h1 {
 
 h2 {
   font-size: var(--step-3);
-  color: (var(--color-neutrals-900));
+  color: var(--color-neutrals-900);
 }
 
 h3 {

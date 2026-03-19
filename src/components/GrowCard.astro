@@ -1,9 +1,13 @@
 ---
 const { value, variant } = Astro.props;
 import ArrowRight from "@icons/arrow--right.svg";
+import DynamicIcon from "@helpers/DynamicIcon.astro";
 ---
 
 <article class={`card ${variant}`}>
+  <div class="icon-wrapper">
+    <DynamicIcon name={value.icon} width={40} height={40} class="social-icon" />
+  </div>
   <h1>{value.title}</h1>
   <p>{value.description}</p>
   <a href="#">Read more <ArrowRight stroke-width={2.5} /></a>
@@ -14,11 +18,22 @@ import ArrowRight from "@icons/arrow--right.svg";
     article {
       background: var(--color-surface-tertiary);
       color: var(--color-on-surface-elevated);
-      padding: 2rem; /* Dette burde være en token */
-      border-radius: 20px; /* Dette burde være en token */
+      padding: 2rem;
+      border-radius: 20px;
       width: 275px;
+
       > * + * {
         margin-block-start: var(--flow-space, 1rlh);
+      }
+
+      .icon-wrapper {
+        background-color: var(--color-text);
+        width: 50px;
+        height: 50px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
 
@@ -57,12 +72,12 @@ import ArrowRight from "@icons/arrow--right.svg";
     .container {
       display: flex;
       flex-direction: column;
-      align-items: center; /* ← centrerer kortene */
+      align-items: center;
       gap: 2rem;
     }
 
     article.card {
-      margin: 0 auto; /* ekstra sikkerhed */
+      margin: 0 auto;
     }
   }
 </style>
