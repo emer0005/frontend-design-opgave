@@ -1,68 +1,12 @@
-# Opgaveskabelon til "Figma til kode"
+I denne opgave har vi arbejdet med at omsætte et Figma-design til en funktionel løsning i Astro med fokus på semantisk HTML og vedligeholdelsesvenlig CSS. En af de største udfordringer var at implementere nye CSS-teknikker som container, subgrid og anchor positioning på en måde, der samtidig fungerer på tværs af browsere.
 
-Se opgavebeskrivelsen på Fronter.
+En succes vi oplevede var opbygning af vore komponenter, hvilket gjorde det lettere at genbruge samt holde overblikket over koden.
 
-## Medfølgende Data
+Vi har anvendt flere teknikker fra undervisningen for eksempel er @container brugt i komponenter for at gøre dem mere fleksible på forskellige sider, og subgrid er anvendt for at sikre konsistent alignment mellem sektioner. Derudover har vi brugt custom properties (fx --space- og --step-) til spacing og typografi, hvilket gør designet mere skalerbart. Relative Color Syntax er brugt til hover, så farver automatisk tilpasses uden at definere nye værdier.
 
-Der medfølger indholdsdata i form af lokale JSON-filer, som du kan bruge til din opgave. Det er ikke et krav til opgaven, men det kan gøre det nemmere og hurtigere at få tekst og billeder ind i dit projekt.
+Defensive CSS er tænkt ind, fx ved brug af max-width: 100% på billeder samt fallback-løsninger med @supports not (...), hvis en feature ikke understøttes. Derudover er der taget hensyn til prefers-reduced-motion for at begrænse animationer.
 
-> [!NOTE]
-> Bemærk, at CaseStudy-siden allerede inkluderer data fra en lokal JSON-fil.
-> Bemærk også, at ikke alle billeder fra Figma-filen er i det lokale indholdsdata.
+Vi har benyttet progressive enhancement ved FAQ sektionen, som fungerer uden JavaScript, og derefter er forbedret med animation i browsere, der understøtter det.
+Ligeledes er Anchor Positioning brugt til login-popover.
 
-Dokumentationen til anvendelsen af dataene finder du på: [https://frontend-design-theme.netlify.app/](https://frontend-design-theme.netlify.app/).
-
-Her er et eksempel på, hvordan du kan bruge dataene i dine Astro-komponenter:
-
-```astro
-import employees from "@data/employees.json";
-
-console.log(employees);
-```
-
-## Brug af hjælpekomponenter
-
-### DynamicImage.astro (`@helpers/DynamicImage.astro`)
-
-Brug denne komponent til at vise billeder dynamisk fra lokale datafiler. Du skal blot sende stien fra datasættet direkte til komponenten.
-
-Eksempel med data:
-
-```astro
-{employees.map((employee) => (
-  <DynamicImage
-    imagePath={employee.img}
-    altText={employee.name}
-    width={200}
-    height={200}
-  />
-))}
-```
-
-### DynamicIcon.astro (`@helpers/DynamicIcon.astro`)
-
-`DynamicIcon` bruges til at vise SVG-ikoner dynamisk baseret på et navn fra dine data.
-
-Eksempel med data:
-
-```astro
-{employee.social_links.map((link) => (
-  <DynamicIcon name={link.icon} />
-))}
-```
-
-Her vises et ikon for hvert socialt medie, hvor `icon`-feltet matcher filnavnet på SVG-ikonet i `src/icons/`.
-
----
-
-## Import af SVG-ikoner direkte
-
-Du kan importere SVG-ikoner direkte i dine komponenter ved at importere dem:
-
-```astro
-import Checkmark from "@icons/checkmark.svg";
-
-<Checkmark width={32} height={32} class="my-icon" />
-```
-
-Se evt. `src/pages/svgs.astro` for flere eksempler på direkte import og brug af SVG-ikoner.
+CSS’en er organiseret med globale styles (fx reset, tokens og typografi) samt komponent-specifik CSS i de enkelte Astro-komponenter. Dette gør det nemmere at vedligeholde og skalere løsningen, da ændringer kan foretages lokalt uden at påvirke resten af systemet.
