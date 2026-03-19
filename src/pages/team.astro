@@ -13,44 +13,8 @@ import Footer from "@components/Footer.astro";
     eyebrow="TEAM"
     text="Our success stems from the synergy between dedicated teams and our valued clients. We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction."
   />
-  <section class="team_hero">
-    <div>
-      <h1>Meet Our Great Team</h1>
-      <p>
-        Welcome to our amazing team! We are a group of passionate individuals
-        dedicated to excellence and innovation. Each member brings unique skills
-        and experiences, working together to achieve our goals. Join us as we
-        embark on exciting projects and create lasting impacts.
-      </p>
-    </div>
-    <button>Join our team</button>
-  </section>
   <MeetOurTeam />
   <Footer />
 </Layout>
 
-<style>
-  .team_hero {
-    --2-col: 1fr 1fr;
-    display: grid;
-    grid-template-columns: var(--2-col);
-    max-width: 1200px;
-    margin-inline: auto;
-
-    button {
-      background-color: var(--color-ui-primary);
-      color: var(--color-on-ui-primary);
-      place-self: end; /* eller center, end */
-      padding: 10px 2rem;
-      border-radius: 20px;
-    }
-
-    h1 {
-      color: var(--color-text);
-    }
-
-    p {
-      color: var(--color-text-muted);
-    }
-  }
-</style>
+<style></style>
