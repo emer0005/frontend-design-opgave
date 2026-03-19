@@ -44,11 +44,6 @@ const { variant } = Astro.props;
         ) -1px -1px /
         var(--grid-size) var(--grid-size),
       #030712;
-    /*background-color: #000;
-  background-positon: -1px -1px;
-  background-repeat: repeat;
-  background-image: conic-gradient(from 180deg at 1px 1px, red 75%, #0000 0);
-  background-size: 60px 60px;*/
     color: #fff;
 
     padding: var(--paddingtb);
@@ -64,10 +59,6 @@ const { variant } = Astro.props;
     > * + * {
       margin-block-start: var(--flow-space, 1rlh);
     }
-  }
-  .grid_1-1 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
   }
 
   button {
@@ -131,5 +122,12 @@ const { variant } = Astro.props;
 
   .about {
     background: var(--color-surface-secondary);
+  }
+
+  @media (width < 600) {
+    .grid_1-1 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
   }
 </style>

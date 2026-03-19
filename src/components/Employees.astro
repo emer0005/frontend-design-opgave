@@ -23,7 +23,11 @@ import DynamicImage from "./helpers/DynamicImage.astro";
         </>
       ) : (
         <div class="image-wrapper">
-          <DynamicImage imagePath={employee.img} altText={employee.name} />
+          <DynamicImage
+            imagePath={employee.img}
+            altText={employee.name}
+            class="image-employee"
+          />
           <h3>{employee.title}</h3>
           <h1>
             <a href={`/${employee.slug}`} />
@@ -163,6 +167,10 @@ import DynamicImage from "./helpers/DynamicImage.astro";
       flex-direction: column;
       height: 100%;
       gap: var(--space-xs);
+    }
+
+    .image-employee {
+      border-radius: 20px;
     }
   }
 </style>

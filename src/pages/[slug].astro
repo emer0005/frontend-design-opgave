@@ -4,6 +4,7 @@ import Header from "@components/Header.astro";
 import team from "@data/employees.json";
 import Footer from "@components/Footer.astro";
 import DynamicImage from "@helpers/DynamicImage.astro";
+import DynamicIcon from "@helpers/DynamicIcon.astro";
 
 export function getStaticPaths() {
   return team.map((person) => ({
@@ -19,7 +20,11 @@ const { person } = Astro.props;
   <Header />
   <section class="info_img">
     <div class="img">
-      <DynamicImage imagePath={person.img} altText={person.name} />
+      <DynamicImage
+        imagePath={person.img}
+        altText={person.name}
+        class="employee-image"
+      />
     </div>
     <div class="info">
       <div class="ceo">
@@ -34,20 +39,22 @@ const { person } = Astro.props;
     </div>
 
     <div class="some">
-      <ul>
-        {
-          person.social_links.map((link) => (
-            <li>
-              <a href={link.url}>{link.platform}</a>
-            </li>
-          ))
-        }
-      </ul>
+      {
+        person.social_links.map((link) => (
+          <DynamicIcon
+            name={link.icon}
+            width={24}
+            height={24}
+            class="social-icon"
+          />
+        ))
+      }
     </div>
   </section>
-
-  <Footer />
 </Layout>
+
+<Footer />
+
 <style>
   .info_img {
     display: grid;
@@ -62,6 +69,7 @@ const { person } = Astro.props;
     position: relative;
     width: 80%;
     justify-self: center;
+    border-radius: 20px;
   }
 
   .img::before {
@@ -75,7 +83,7 @@ const { person } = Astro.props;
     z-index: -1;
   }
 
-  .img {
+  .employee-image {
     grid-column: 1/2;
     position: relative;
     display: block;
@@ -84,18 +92,18 @@ const { person } = Astro.props;
     height: auto;
     z-index: 1;
     margin-bottom: 2rem;
-    border-radius: 25px;
+    border-radius: 50px;
   }
 
   .info {
     grid-column: 2/3;
     display: flex;
     flex-direction: column;
-    gap: 2rem; /* luft mellem sektionerne */
+    gap: 2rem;
   }
   .info > div + div {
     border-top: 1px solid #c1c1c1;
-    padding-top: 2rem; /* luft over stregen */
+    padding-top: 2rem;
   }
 
   .ceo,
@@ -106,17 +114,11 @@ const { person } = Astro.props;
   }
 
   .some {
+    display: flex;
+    gap: 20px;
     grid-column: 1/2;
     grid-row: 2;
     justify-self: center;
-  }
-
-  .some ul {
-    display: flex;
-    gap: 1rem; /* afstand mellem links */
-    padding: 0;
-    margin: 0;
-    list-style: none;
   }
 
   h1 {
@@ -130,7 +132,8 @@ const { person } = Astro.props;
   p {
     color: var(--color-neutrals-700);
   }
-  /* Mobilvisning — ALTID nederst */
+
+  /* Mobilvisning */
   @media (max-width: 800px) {
     .info_img {
       grid-template-columns: 1fr;

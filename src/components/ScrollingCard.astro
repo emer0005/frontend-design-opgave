@@ -1,21 +1,10 @@
 ---
 const { finan } = Astro.props;
-
-import cal from "@icons/cal.svg?url";
-import card from "@icons/card.svg?url";
-import law from "@icons/law.svg?url";
-import money from "@icons/money.svg?url";
-
-const icons = {
-  cal,
-  card,
-  law,
-  money,
-};
+import DynamicIcon from "@helpers/DynamicIcon.astro";
 ---
 
 <article class="card">
-  <img src={icons[finan.icon]} alt={finan.icon} />
+  <DynamicIcon name={finan.icon} width={24} height={24} class="social-icon" />
   <h1>{finan.title}</h1>
   <p>{finan.description}</p>
 </article>
@@ -27,6 +16,10 @@ const icons = {
       color: var(--color-on-surface-elevated);
       padding: 2rem;
       border-radius: 20px;
+
+      .social-icon {
+        color: var(--color-text);
+      }
     }
 
     .card {
