@@ -5,7 +5,7 @@ import Employees from "@components/Employees.astro";
 
 <section>
   <div class="team_hero">
-    <div>
+    <div class="tekst">
       <h1>Meet Our Great Team</h1>
       <p>
         Welcome to our amazing team! We are a group of passionate individuals
@@ -52,11 +52,20 @@ import Employees from "@components/Employees.astro";
     margin-inline: auto;
 
     button {
-      background-color: var(--color-ui-primary);
+      background: oklch(from var(--color-ui-primary) calc(l var(--l,)) c h);
       color: var(--color-on-ui-primary);
       place-self: end; /* eller center, end */
       padding: 10px 2rem;
       border-radius: 20px;
+
+      &:hover {
+        /* øg lightness med 5% */
+        --l: +/* */ 0.3;
+      }
+      &:active {
+        /* øg lightness med 10% */
+        --l: +/* */ 0.1;
+      }
     }
 
     h1 {
@@ -65,6 +74,14 @@ import Employees from "@components/Employees.astro";
 
     p {
       color: var(--color-text-muted);
+    }
+  }
+
+  .tekst {
+    padding: var(--paddingtb);
+
+    > * + * {
+      margin-top: var(--flow-space, 1rlh);
     }
   }
 </style>

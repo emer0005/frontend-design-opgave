@@ -9,7 +9,7 @@ import ClockIcon from "@icons/clock.svg";
 ---
 
 <section>
-  <div>
+  <div class="tekst">
     <h3>PROCESS</h3>
     <h1>Contact Us. It’s Easy.</h1>
     <p>
@@ -53,9 +53,13 @@ import ClockIcon from "@icons/clock.svg";
     grid-template-columns: 1fr 1fr;
     max-width: 1200px;
     margin: 0 auto;
-    margin-top: 5rem;
+    padding: var(--paddingtb);
   }
-
+  .tekst {
+    > * + * {
+      margin-block-start: var(--flow-space, 1rlh);
+    }
+  }
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -75,14 +79,19 @@ import ClockIcon from "@icons/clock.svg";
   .contact-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    > * + * {
+      margin-block-start: var(--flow-space, 1rlh);
+    }
   }
 
   .contact-list li {
     position: relative;
-    padding-left: 32px;
-    margin-bottom: 16px;
+    padding-left: 40px;
     color: var(--color-text-muted);
+
+    > * + * {
+      margin-block-start: var(--flow-space, 1rlh);
+    }
   }
 
   .contact-list li::before {
@@ -126,16 +135,6 @@ import ClockIcon from "@icons/clock.svg";
     z-index: 1;
     border-radius: 25px;
     object-fit: cover;
-  }
-
-  h1 {
-    color: var(--color-neutrals-900);
-    font-size: var(--step-1);
-    font-weight: 500;
-  }
-
-  p {
-    color: var(--color-neutrals-700);
   }
 
   span {

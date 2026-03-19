@@ -4,7 +4,7 @@ import experienceData from "@data/experience.json";
 
 <section>
   <div class="grid">
-    <div>
+    <div class="tekst">
       <h3>{experienceData.eyebrow}</h3>
       <h1>{experienceData.title}</h1>
       <h2>{experienceData.subtitle}</h2>
@@ -33,17 +33,42 @@ import experienceData from "@data/experience.json";
     initial-value: 0;
     inherits: true;
   }
+
+  @keyframes countUp {
+    from {
+      --animatedNumber: 0;
+    }
+    to {
+      --animatedNumber: var(--value);
+    }
+  }
+
   .stats {
-    width: 180px;
-    aspect-ratio: 1;
-    flex: 0 1 150px;
-    min-width: 0;
-    --animatedNumber: var(--value);
+    /* VIEW-TIMELINE: kør når .stats kommer i viewport */
+    view-timeline-name: --stats;
+    view-timeline-axis: block;
+
+    animation-name: countUp;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+    animation-timeline: --stats;
+    animation-range: entry 0% cover 40%;
+
+    /* DATA TIL ANIMATIONEN */
+    --animatedNumber: 0;
     --percentage: calc(var(--animatedNumber) * 1%);
     --bd: 6px;
+
+    /* LAYOUT & STYLING */
+    width: 180px;
+    aspect-ratio: 1;
     position: relative;
+    border-radius: 999px;
     border: var(--bd) solid #0000;
-    content: "";
+    display: grid;
+    container: stat / inline-size;
+
     background:
       radial-gradient(
           circle at 50% calc(var(--bd) / 2),
@@ -53,32 +78,29 @@ import experienceData from "@data/experience.json";
         border-box,
       linear-gradient(var(--color-yellow-600)) padding-box,
       conic-gradient(white var(--percentage), #daae3c 0) border-box;
-    border-radius: 999px;
+  }
 
-    display: grid;
-    container: stat / inline-size;
-    transition: --animatedNumber 2s;
-    &::after {
-      counter-reset: val round(var(--animatedNumber));
-      grid-area: 1 / 1;
-      content: counter(val) "%";
-      place-self: center;
-      font-size: 30cqw;
-      font-variant-numeric: tabular-nums;
-      font-feature-settings: "tnum";
-      font-weight: 800;
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      width: calc(var(--bd) * 3);
-      aspect-ratio: 1;
-      border-radius: calc(infinity * 1px);
-      background: black;
-      border: 4px solid white;
-      offset: border-box var(--percentage);
-      offset-anchor: 50% calc(50% - var(--bd) / 2);
-    }
+  .stats::after {
+    counter-reset: val round(var(--animatedNumber));
+    grid-area: 1 / 1;
+    content: counter(val) "%";
+    place-self: center;
+    font-size: 30cqw;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    font-weight: 800;
+  }
+
+  .stats::before {
+    content: "";
+    position: absolute;
+    width: calc(var(--bd) * 3);
+    aspect-ratio: 1;
+    border-radius: calc(infinity * 1px);
+    background: black;
+    border: 4px solid white;
+    offset: border-box var(--percentage);
+    offset-anchor: 50% calc(50% - var(--bd) / 2);
   }
 
   article {
@@ -92,9 +114,7 @@ import experienceData from "@data/experience.json";
 
   section {
     background-color: var(--color-surface-highlight);
-    margin-top: 2rem;
-    padding-bottom: 5rem;
-    padding-top: 5rem;
+    padding: var(--paddingtb);
   }
 
   .grid {
@@ -103,18 +123,24 @@ import experienceData from "@data/experience.json";
     display: flex;
   }
 
-  h3 {
-    color: var(--color-neutrals-900);
+  .tekst {
+    > * + * {
+      margin-block-start: var(--flow-space, 1rlh);
+    }
   }
-  h1 {
-    font-size: var(--step-2);
-    font-weight: 600;
-    color: (var(--color-neutrals-900));
-  }
+
   p {
-    color: var(--color-neutrals-700);
+    color: var(--color-text);
+    font-weight: 500;
     max-width: 600px;
     text-align: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stats {
+      animation: none !important;
+      --animatedNumber: var(--value);
+    }
   }
 
   @media (max-width: 600px) {

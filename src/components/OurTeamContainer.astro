@@ -19,7 +19,7 @@ import Employees from "@components/Employees.astro";
     <div class="card">
       {
         EmployeeData.filter(
-          (employee) => employee.id === 1 || employee.id === 2
+          (employee) => employee.id === 1 || employee.id === 2,
         ).map((employee) => <Employees employee={employee} variant="about" />)
       }
     </div>
@@ -34,26 +34,23 @@ import Employees from "@components/Employees.astro";
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
-  }
-
-  p {
-    color: var(--color-text-muted);
-  }
-
-  h3 {
-    color: (var(--color-neutrals-900));
-  }
-  h1 {
-    font-size: var(--step-2);
-    font-weight: 600;
-    color: (var(--color-neutrals-900));
+    padding: var(--paddingtb);
   }
 
   button {
-    background-color: var(--color-neutrals-900);
+    background-color: oklch(from var(--color-ui-primary) calc(l var(--l,)) c h);
     color: var(--color-on-ui-primary);
     padding: 10px;
     border-radius: 30px;
+
+    &:hover {
+      /* øg lightness med 5% */
+      --l: +/* */ 0.3;
+    }
+    &:active {
+      /* øg lightness med 10% */
+      --l: +/* */ 0.1;
+    }
   }
 
   /*************** @Media ********************/

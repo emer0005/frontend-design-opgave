@@ -12,17 +12,16 @@ import LogIn from "./LogIn.astro";
       <span></span>
       <span></span>
     </label>
-
     <ul class="menu">
       <li><a href="index.html">Home</a></li>
       <li><a href="/casestudy.html">Case study</a></li>
       <li><a href="/team.html">Team</a></li>
       <li><a href="/about">About</a></li>
-
-      <!-- LOGIN TIL MOBIL -->
-      <li popovertarget="pop" class="login-mobile"><LogIn /></li>
+      <li><button class="mobilbtn">Login</button></li>
     </ul>
-    <li popovertarget="pop" class="login-desk"><LogIn /></li>
+    <div class="deskbtn">
+      <LogIn />
+    </div>
   </div>
 </nav>
 
@@ -46,10 +45,6 @@ import LogIn from "./LogIn.astro";
     padding: 0;
   }
 
-  .login-desk {
-    display: flex;
-    justify-content: flex-end;
-  }
   .logo {
     color: var(--color-surface-tertiary);
     font-size: var(--step-1);
@@ -70,7 +65,7 @@ import LogIn from "./LogIn.astro";
     font-size: var(--step--1);
   }
 
-  button {
+  .deskbtn {
     background-color: var(--color-on-ui-primary);
     width: 100px;
     justify-self: end;
@@ -81,8 +76,12 @@ import LogIn from "./LogIn.astro";
     display: none;
   }
 
-  .login-mobile {
+  .mobilbtn {
     display: none;
+  }
+
+  .deskbtn {
+    display: block;
   }
 
   @media (max-width: 800px) {
@@ -100,13 +99,15 @@ import LogIn from "./LogIn.astro";
       margin-right: 1rem;
     }
 
-    .login-desk {
+    .deskbtn {
       display: none;
     }
 
-    .login-mobile {
-      display: none;
-      margin-top: 1rem;
+    .mobilbtn {
+      display: block;
+      background-color: var(--color-on-ui-primary);
+      border-radius: var(--border-radius-xl);
+      padding: 0 1rem;
     }
 
     .menu {

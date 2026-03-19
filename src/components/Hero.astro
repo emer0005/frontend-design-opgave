@@ -41,7 +41,7 @@ import ArrowRight from "@icons/arrow--right.svg";
       padding: 2rem;
 
       & > * + * {
-        margin-top: var(--space-s, 1rlh);
+        margin-top: var(--flow-space, 1rlh);
       }
     }
 
@@ -129,7 +129,7 @@ import ArrowRight from "@icons/arrow--right.svg";
         border-radius: var(--border-radius-xl);
         padding-block: 12px;
         padding-inline: 18px;
-        background-color: var(--color-ui-primary);
+        background: oklch(from var(--color-ui-primary) calc(l var(--l,)) c h);
         color: var(--color-on-ui-primary);
         text-decoration: none;
         outline: 1px solid var(--color-on-ui-primary-muted);
@@ -138,13 +138,22 @@ import ArrowRight from "@icons/arrow--right.svg";
         font-size: var(--step-1);
         font-weight: 500;
 
+        &:hover {
+          /* øg lightness med 5% */
+          --l: +/* */ 0.05;
+        }
+        &:active {
+          /* øg lightness med 10% */
+          --l: +/* */ 0.1;
+        }
+
         svg {
           inline-size: 16px;
           color: var(--color-on-ui-primary);
         }
 
         &:not(:last-child) {
-          background-color: var(--color-action);
+          background: oklch(from var(--color-action) calc(l var(--l,)) c h);
           color: var(--color-text);
           outline: none;
         }

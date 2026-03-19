@@ -73,24 +73,14 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
   section {
     max-width: 65ch;
     margin: 0 auto;
+    > * + * {
+      margin-top: var(--flow-space, 1rlh);
+    }
   }
 
   header {
     position: relative;
-    margin-bottom: 4rem; /* justér efter smag */
-  }
-
-  h2 {
-    font-size: var(--step-2);
-    font-weight: 500;
-    color: (var(--color-neutrals-900));
-    margin: 0 auto;
-  }
-
-  h3 {
-    font-size: var(--step-1);
-    font-weight: 500;
-    color: (var(--color-neutrals-900));
+    margin-bottom: 4rem;
   }
 
   .hero-image,
@@ -116,10 +106,10 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
     margin: 0 auto;
     position: absolute;
     left: 50%;
-    bottom: -3rem; /* hvor meget den skal hænge ned */
+    bottom: -3rem;
     transform: translateX(-50%);
     z-index: 10;
-    width: calc(100% - 2rem); /* så den ikke går helt ud til kanten på mobil */
+    width: calc(100% - 2rem);
   }
 
   @media (max-width: 600px) {
@@ -128,7 +118,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
       margin-right: 1rem;
     }
     header {
-      margin-bottom: 12rem; /* justér efter hvor langt boksen overlapper */
+      margin-bottom: 12rem;
     }
     .case-details {
       position: absolute;
@@ -187,16 +177,26 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
 
   .case-details dl > div {
     display: flex;
-    flex-direction: column; /* dt over dd */
+    flex-direction: column;
   }
 
   .case-details .button {
-    align-self: center; /* så den ikke strækkes */
-    justify-self: cetner; /* venstrejusteret */
-    padding: 0.75rem 1.5rem; /* normal knapstørrelse */
-    background-color: var(--color-action);
+    align-self: center;
+    justify-self: cetner;
+    padding: 0.75rem 1.5rem;
+
     color: var(--color-text);
     border-radius: 20px;
-    display: inline-block; /* vigtig! forhindrer stræk */
+    display: inline-block;
+    background: oklch(from var(--color-action) calc(l var(--l,)) c h);
+
+    &:hover {
+      /* øg lightness med 5% */
+      --l: +/* */ 0.05;
+    }
+    &:active {
+      /* øg lightness med 10% */
+      --l: +/* */ 0.1;
+    }
   }
 </style>

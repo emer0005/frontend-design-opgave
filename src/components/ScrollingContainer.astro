@@ -6,7 +6,7 @@ import Navigation1 from "@icons/navigation1.svg";
 
 <section>
   <div class="grid">
-    <div>
+    <div class="tekst">
       <h3>{finanData.eyebrow}</h3>
       <h1>{finanData.title}</h1>
       <p>{finanData.subtitle}</p>
@@ -24,6 +24,11 @@ import Navigation1 from "@icons/navigation1.svg";
 
 <style>
   @layer components {
+    .tekst {
+      > * + * {
+        margin-block-start: var(--flow-space, 1rlh);
+      }
+    }
     /************* Cards *************/
     .cards_container {
       max-width: 1200px;
@@ -60,27 +65,11 @@ import Navigation1 from "@icons/navigation1.svg";
     section {
       overflow: hidden;
       background-color: var(--color-neutrals-100);
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+      padding: var(--paddingtb);
 
-      & > * + * {
-        margin-top: var(--space-xs, 1rlh);
+      > * + * {
+        margin-top: var(--flow-space, 1rlh);
       }
-    }
-
-    h3 {
-      color: var(--color-neutrals-900);
-    }
-
-    h1 {
-      font-size: var(--step-2);
-      font-weight: 600;
-      color: (var(--color-neutrals-900));
-    }
-
-    p {
-      color: var(--color-neutrals-700);
-      max-width: 600px;
     }
 
     .svg {

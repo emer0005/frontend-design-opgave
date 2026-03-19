@@ -34,17 +34,14 @@ const icons = {
       scroll-snap-align: start;
       scroll-snap-stop: always;
       gap: 2rem;
+
+      > * + * {
+        margin-top: var(--flow-space, 1rlh);
+      }
     }
 
     h1 {
-      color: var(--color-neutrals-900);
       font-size: var(--step-1);
-      font-weight: 500;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      color: var(--color-neutrals-700);
     }
   }
 </style>

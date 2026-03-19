@@ -22,20 +22,34 @@
   footer {
     background-color: var(--color-surface-elevated);
     margin-top: 5rem;
+    padding-top: var(--space-l);
+    padding-bottom: var(--space-l);
   }
 
   .footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
     max-width: 75rem;
     margin: 0 auto;
-    align-items: center;
+  }
+
+  @media (width < 600px) {
+    .footer {
+      display: grid;
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 10px;
+    }
   }
 
   .text {
     max-width: 75rem;
     margin: 0 auto;
+    padding-bottom: var(--space-l);
     text-align: center;
+    > * + * {
+      margin-block-start: var(--flow-space, 1rlh);
+    }
   }
 
   input {
@@ -45,10 +59,19 @@
   }
 
   button {
-    background-color: var(--color-action);
+    background: oklch(from var(--color-action) calc(l var(--l,)) c h);
     padding: 10px;
     border-radius: 40px;
     border: none;
+
+    &:hover {
+      /* øg lightness med 5% */
+      --l: +/* */ 0.05;
+    }
+    &:active {
+      /* øg lightness med 10% */
+      --l: +/* */ 0.1;
+    }
   }
 
   .logo {

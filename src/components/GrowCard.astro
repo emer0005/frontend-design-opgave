@@ -16,7 +16,10 @@ import ArrowRight from "@icons/arrow--right.svg";
       color: var(--color-on-surface-elevated);
       padding: 2rem; /* Dette burde være en token */
       border-radius: 20px; /* Dette burde være en token */
-      width: 250px;
+      width: 275px;
+      > * + * {
+        margin-block-start: var(--flow-space, 1rlh);
+      }
     }
 
     .about {

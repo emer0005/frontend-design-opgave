@@ -7,9 +7,15 @@ const { variant } = Astro.props;
 
 <section class={`${variant}`}>
   <div class="grid">
-    <h3>{valuesData.eyebrow}</h3>
-    <h1>{valuesData.title}</h1>
-    <p>{valuesData.subtitle}</p>
+    <div class="grid_1-1">
+      <div>
+        <h3>{valuesData.eyebrow}</h3>
+        <h1>{valuesData.title}</h1>
+        <p>{valuesData.subtitle}</p>
+      </div>
+
+      <button>Get in touch</button>
+    </div>
 
     <div class="values">
       {
@@ -45,8 +51,8 @@ const { variant } = Astro.props;
   background-size: 60px 60px;*/
     color: #fff;
 
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding: var(--paddingtb);
+
     & > * + * {
       margin-top: var(--space-xs, 1rlh);
     }
@@ -55,8 +61,46 @@ const { variant } = Astro.props;
   .grid {
     max-width: 1200px;
     margin: 0 auto;
+    > * + * {
+      margin-block-start: var(--flow-space, 1rlh);
+    }
+  }
+  .grid_1-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
+  button {
+    color: var(--color-ui-primary);
+    background: oklch(from var(--color-on-ui-primary) calc(l var(--l,)) c h);
+    place-self: end; /* eller center, end */
+    padding: 10px 2rem;
+    border-radius: 20px;
+
+    &:hover {
+      /* øg lightness med 5% */
+      --l: -/* */ 0.05;
+    }
+    &:active {
+      /* øg lightness med 10% */
+      --l: -/* */ 0.1;
+    }
+  }
+
+  .about button {
+    background: oklch(from var(--color-ui-primary) calc(l var(--l,)) c h);
+
+    color: var(--color-on-ui-primary);
+
+    &:hover {
+      /* øg lightness med 5% */
+      --l: +/* */ 0.2;
+    }
+    &:active {
+      /* øg lightness med 10% */
+      --l: +/* */ 0.1;
+    }
+  }
   .values {
     display: flex;
     flex-wrap: wrap;
@@ -66,8 +110,6 @@ const { variant } = Astro.props;
     color: var(--color-on-ui-primary);
   }
   h1 {
-    font-size: var(--step-2);
-    font-weight: 600;
     color: var(--color-on-ui-primary);
   }
   p {

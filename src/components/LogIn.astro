@@ -22,10 +22,6 @@
     border-radius: var(--border-radius-xl);
   }
 
-  [popovertarget] {
-    anchor-name: --button;
-  }
-
   [popover] {
     --arrow-size: 0.6rem;
     position-area: bottom;
@@ -37,8 +33,6 @@
     &::before {
       content: "";
       position: fixed;
-      width: calc(var(--arrow-size) * 1.667);
-      height: var(--arrow-size);
       background: inherit;
       clip-path: polygon(0 100%, 50% 0, 100% 100%);
       position-anchor: --button;
