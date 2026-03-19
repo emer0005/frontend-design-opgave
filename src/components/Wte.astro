@@ -8,7 +8,7 @@ const { variant, eyebrow, title, text, punkt1, punkt2, img } = Astro.props;
     <Image src={img} alt="CEO" />
   </div>
   <div class="wte_content">
-    <h2>{eyebrow}</h2>
+    <h5>{eyebrow}</h5>
     <h1>{title}</h1>
     <p>{text}</p>
     <ul>
@@ -96,6 +96,7 @@ const { variant, eyebrow, title, text, punkt1, punkt2, img } = Astro.props;
     height: auto;
     z-index: 1;
     margin-bottom: 2rem;
+    border-radius: 20px;
   }
 
   .wte_content {

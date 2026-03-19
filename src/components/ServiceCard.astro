@@ -13,10 +13,13 @@ import ArrowRight from "@icons/arrow--right.svg";
 <style>
   @layer components {
     article {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
       background: var(--color-blue-700-transparent);
       color: var(--color-on-surface-elevated);
-      padding: 2rem; /* Dette burde være en token */
-      border-radius: 20px; /* Dette burde være en token */
+      padding: 2rem;
+      border-radius: 20px;
     }
     a {
       display: inline flex;
@@ -27,6 +30,10 @@ import ArrowRight from "@icons/arrow--right.svg";
       svg {
         inline-size: 16px;
       }
+    }
+
+    p {
+      color: var(--color-on-surface-elevated);
     }
   }
 </style>

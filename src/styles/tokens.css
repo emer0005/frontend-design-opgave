@@ -40,14 +40,14 @@
   --space-xl: clamp(3.375rem, 3.2216rem + 0.6818vw, 3.75rem);
 
   /* ==== Typography ==== */
-  --step--2: clamp(0.5208rem, 0.3813rem + 0.5583vw, 0.8rem);
-  --step--1: clamp(0.625rem, 0.4375rem + 0.75vw, 1rem);
-  --step-0: clamp(0.75rem, 0.5rem + 1vw, 1.25rem);
-  --step-1: clamp(0.9rem, 0.5688rem + 1.325vw, 1.5625rem);
-  --step-2: clamp(1.08rem, 0.6434rem + 1.7463vw, 1.9531rem);
-  --step-3: clamp(1.296rem, 0.7233rem + 2.2908vw, 2.4414rem);
-  --step-4: clamp(1.5552rem, 0.8069rem + 2.9931vw, 3.0518rem);
-  --step-5: clamp(1.8662rem, 0.892rem + 3.8969vw, 3.8147rem);
+  --step--2: clamp(0.7813rem, 0.7457rem + 0.1578vw, 0.8681rem);
+  --step--1: clamp(0.9375rem, 0.8949rem + 0.1894vw, 1.0417rem);
+  --step-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+  --step-1: clamp(1.35rem, 1.2886rem + 0.2727vw, 1.5rem);
+  --step-2: clamp(1.62rem, 1.5464rem + 0.3273vw, 1.8rem);
+  --step-3: clamp(1.944rem, 1.8556rem + 0.3927vw, 2.16rem);
+  --step-4: clamp(2.3328rem, 2.2268rem + 0.4713vw, 2.592rem);
+  --step-5: clamp(2.7994rem, 2.6721rem + 0.5655vw, 3.1104rem);
 
   /* ==== Border Radii ==== */
   --border-radius-xs: 2px;
